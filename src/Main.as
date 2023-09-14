@@ -112,11 +112,20 @@ bool get_IsLoadingScreenActive()
 	return app.LoadProgress.State == NGameLoadProgress::EState::Displayed;
 }
 
+#if TMNEXT
 // app.Network.ClientManiaAppPlayground
 CGameManiaAppPlayground@ get_cmap()
 {
 	return app.Network.ClientManiaAppPlayground;
 }
+#else
+// app.Network.PlaygroundClientScriptAPI.UI
+CGamePlaygroundUIConfig@ get_cmap()
+{
+	if (app.Network.PlaygroundClientScriptAPI is null) return null;
+	return app.Network.PlaygroundClientScriptAPI.UI;
+}
+#endif
 
 // app.Network.ClientManiaAppPlayground.Input
 CInputScriptManager@ get_InputMgr()
