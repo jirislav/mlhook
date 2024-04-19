@@ -109,23 +109,18 @@ CGameManiaPlanet@ get_app()
 //
 bool get_IsLoadingScreenActive()
 {
+#if TMNEXT
 	return app.LoadProgress.State == NGameLoadProgress::EState::Displayed;
+#else
+	return app.LoadProgress.Overlay.OverlayMax.Length() > 0;
+#endif
 }
 
-#if TMNEXT
 // app.Network.ClientManiaAppPlayground
 CGameManiaAppPlayground@ get_cmap()
 {
 	return app.Network.ClientManiaAppPlayground;
 }
-#else
-// app.Network.PlaygroundClientScriptAPI.UI
-CGamePlaygroundUIConfig@ get_cmap()
-{
-	if (app.Network.PlaygroundClientScriptAPI is null) return null;
-	return app.Network.PlaygroundClientScriptAPI.UI;
-}
-#endif
 
 // app.Network.ClientManiaAppPlayground.Input
 CInputScriptManager@ get_InputMgr()

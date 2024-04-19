@@ -7,6 +7,6 @@ set -e
 # ./build.sh [dev|release]
 # Defaults to `dev` build mode.
 
-export PLUGINS_DIR=${PLUGINS_DIR:-$HOME/win/Openplanet4/Plugins}
+export PLUGINS_DIR=${PLUGINS_DIR:-$HOME/Openplanet4/Plugins}
 
 ./build.sh $@
